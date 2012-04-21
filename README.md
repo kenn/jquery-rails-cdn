@@ -8,18 +8,20 @@ Serving jQuery from a publicly available [CDN](http://en.wikipedia.org/wiki/Cont
 * **Caching**: CDN is used so widely that potentially your users may not need to download jQuery at all.
 * **Parallelism**: Browsers have a limitation on how many connections can be made to a single host. Using CDN for jQuery offloads a big one.
 
-On top of that, if you're using asset pipeline, you may have noticed that the major chunks of the code in `application.js` is jQuery. Implications of externalizing jQuery from `application.js` are:
-
-* Updating your js code won't evict the entire cache in browsers - your code changes more often than jQuery upgrades, right?
-* `rake assets:precompile` takes less peak memory usage.
-
 ## Features
+
+This gem offers the following features:
 
 * Supports multiple CDN. (Google, Microsoft and jquery.com)
 * jQuery version is automatically detected via jquery-rails.
 * Automatically fallback to jquery-rails' bundled jQuery when:
   * You're on a development environment, so that you can work offline.
   * The CDN is down or unavailable.
+
+On top of that, if you're using asset pipeline, you may have noticed that the major chunks of the code in `application.js` is jQuery. Implications of externalizing jQuery from `application.js` are:
+
+* Updating your js code won't evict the entire cache in browsers - your code changes more often than jQuery upgrades, right?
+* `rake assets:precompile` takes less peak memory usage.
 
 ## Installation
 
