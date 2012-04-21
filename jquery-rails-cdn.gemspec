@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["kenn.ejima@gmail.com"]
   gem.description   = %q{Add CDN support to jquery-rails}
   gem.summary       = %q{Add CDN support to jquery-rails}
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/kenn/jquery-rails-cdn"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
