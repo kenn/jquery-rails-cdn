@@ -50,7 +50,7 @@ It will generate the following on production:
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 //<![CDATA[
-window.jQuery || document.write(unescape('%3Cscript src="/assets/jquery.js?body=1" type="text/javascript">%3C/script>'))
+window.jQuery || document.write(unescape('%3Cscript src="/assets/jquery-86b29a215ef746103e2469f095a4df9e.js" type="text/javascript">%3C/script>'))
 //]]>
 </script>
 ```
