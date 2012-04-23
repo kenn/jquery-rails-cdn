@@ -25,7 +25,7 @@ On top of that, if you're using asset pipeline, you may have noticed that the ma
 
 Changelog:
 
-* v0.1.0: Added :google_schemeless for sites that support both ssl / non-ssl
+* v0.1.0: Added `:google_schemeless` for sites that support both ssl / non-ssl
 * v0.0.1: Initial release
 
 ## Installation
