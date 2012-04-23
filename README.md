@@ -23,6 +23,11 @@ On top of that, if you're using asset pipeline, you may have noticed that the ma
 * Updating your js code won't evict the entire cache in browsers - your code changes more often than jQuery upgrades, right?
 * `rake assets:precompile` takes less peak memory usage.
 
+Changelog:
+
+* v0.1.0: Added :google_schemeless for sites that support both ssl / non-ssl
+* v0.0.1: Initial release
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -44,7 +49,15 @@ Then in layout:
 = javascript_include_tag 'application'
 ```
 
-Note that valid CDN symbols are `:google`, `:google_ssl`, `:microsoft` and `:jquery`.
+Note that valid CDN symbols are:
+
+```ruby
+:google
+:google_ssl
+:google_schemeless
+:microsoft
+:jquery
+```
 
 It will generate the following on production:
 
