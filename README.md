@@ -76,6 +76,12 @@ on development:
 <script src="/assets/jquery.js?body=1" type="text/javascript"></script>
 ```
 
+Be sure to put the following line in `config/application.rb`, as it will be served when CDN is not available.
+
+```ruby
+config.assets.precompile += ['jquery.js']
+```
+
 If you want to check the production URL, you can pass `:force => true` as an option.
 
 ```ruby
