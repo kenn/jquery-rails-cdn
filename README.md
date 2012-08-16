@@ -53,8 +53,6 @@ Note that valid CDN symbols are:
 
 ```ruby
 :google
-:google_ssl
-:google_schemeless
 :microsoft
 :jquery
 :yandex
