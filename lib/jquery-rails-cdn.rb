@@ -6,9 +6,7 @@ module Jquery::Rails::Cdn
     JQUERY_VERSION = Jquery::Rails::JQUERY_VERSION
     OFFLINE = (Rails.env.development? or Rails.env.test?)
     URL = {
-      :google             => "http://ajax.googleapis.com/ajax/libs/jquery/#{JQUERY_VERSION}/jquery.min.js",
-      :google_ssl         => "https://ajax.googleapis.com/ajax/libs/jquery/#{JQUERY_VERSION}/jquery.min.js",
-      :google_schemeless  => "//ajax.googleapis.com/ajax/libs/jquery/#{JQUERY_VERSION}/jquery.min.js",
+      :google             => "//ajax.googleapis.com/ajax/libs/jquery/#{JQUERY_VERSION}/jquery.min.js",
       :microsoft          => "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-#{JQUERY_VERSION}.min.js",
       :jquery             => "http://code.jquery.com/jquery-#{JQUERY_VERSION}.min.js"
     }
