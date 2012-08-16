@@ -13,7 +13,7 @@ module Jquery::Rails::Cdn
       :jquery             => "http://code.jquery.com/jquery-#{JQUERY_VERSION}.min.js"
     }
 
-    def jquery_url(name, options = {})
+    def jquery_url(name = :google, options = {})
       URL[name]
     end
 
