@@ -57,6 +57,7 @@ Note that valid CDN symbols are:
 :google_schemeless
 :microsoft
 :jquery
+:yandex
 ```
 
 It will generate the following on production:
