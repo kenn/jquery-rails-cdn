@@ -12,7 +12,7 @@ module Jquery::Rails::Cdn
       :yandex             => "http://yandex.st/jquery/#{JQUERY_VERSION}/jquery.js"
     }
 
-    def jquery_url(name, options = {})
+    def jquery_url(name = :google, options = {})
       URL[name]
     end
 

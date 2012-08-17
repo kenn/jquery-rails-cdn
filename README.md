@@ -48,8 +48,13 @@ If you're using asset pipeline with Rails 3.1+, first remove `//= require jquery
 Then in layout:
 
 ```ruby
-= jquery_include_tag :google
+= jquery_include_tag
 = javascript_include_tag 'application'
+```
+
+By default it use Google CDN, but you can change it:
+```ruby
+= jquery_include_tag :jquery
 ```
 
 Note that valid CDN symbols are:
