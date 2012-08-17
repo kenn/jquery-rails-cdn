@@ -64,10 +64,10 @@ Note that valid CDN symbols are:
 It will generate the following on production:
 
 ```html
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 //<![CDATA[
-window.jQuery || document.write(unescape('%3Cscript src="/assets/jquery-86b29a215ef746103e2469f095a4df9e.js" type="text/javascript">%3C/script>'))
+window.jQuery || document.write(unescape('%3Cscript src="/assets/jquery-3aaa3fa0b0207a1abcd30555987cd4cc.js" type="text/javascript">%3C/script>'))
 //]]>
 </script>
 ```
