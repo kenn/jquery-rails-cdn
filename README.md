@@ -43,9 +43,16 @@ gem 'jquery-rails-cdn'
 
 ## Usage
 
-This gem adds two methods `jquery_include_tag` to generate a script tag to the jQuery on a CDN of your preference.
+This gem adds two methods `jquery_include_tag` and `jquery_url`.
 
-If you're using asset pipeline with Rails 3.1+, first remove `//= require jquery` from `application.js`.
+If you're using asset pipeline with Rails 3.1+,
+
+- Remove `//= require jquery` from `application.js`.
+- Put the following line in `config/application.rb`, so that jquery.js will be served from your server when CDN is not available.
+
+```ruby
+config.assets.precompile += ['jquery.js']
+```
 
 Then in layout:
 
@@ -54,16 +61,9 @@ Then in layout:
 = javascript_include_tag 'application'
 ```
 
-Note that valid CDN symbols are:
+Note that valid CDN symbols are `:google`, `:microsoft`, `:jquery` and `:yandex`.
 
-```ruby
-:google
-:microsoft
-:jquery
-:yandex
-```
-
-It will generate the following on production:
+Now, it will generate the following on production:
 
 ```html
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
@@ -78,12 +78,6 @@ on development:
 
 ```html
 <script src="/assets/jquery.js?body=1" type="text/javascript"></script>
-```
-
-Be sure to put the following line in `config/application.rb`, as it will be served when CDN is not available.
-
-```ruby
-config.assets.precompile += ['jquery.js']
 ```
 
 If you want to check the production URL, you can pass `:force => true` as an option.
