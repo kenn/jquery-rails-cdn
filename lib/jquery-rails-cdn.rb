@@ -39,7 +39,7 @@ module Jquery::Rails::Cdn
       return javascript_include_tag("jquery-ui") if OFFLINE and !options[:force]
 
       [ javascript_include_tag(jquery_ui_url(name, options)),
-        javascript_tag("window.jQuery || document.write(unescape('#{javascript_include_tag("jquery-ui").gsub('<','%3C')}'))")
+        javascript_tag("(window.jQuery && window.jQuery.ui) || document.write(unescape('#{javascript_include_tag("jquery-ui").gsub('<','%3C')}'))")
       ].join("\n").html_safe
     end
   end
