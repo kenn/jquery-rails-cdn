@@ -9,7 +9,8 @@ module Jquery::Rails::Cdn
       :google             => "//ajax.googleapis.com/ajax/libs/jquery/#{JQUERY_VERSION}/jquery.min.js",
       :microsoft          => "//ajax.aspnetcdn.com/ajax/jQuery/jquery-#{JQUERY_VERSION}.min.js",
       :jquery             => "http://code.jquery.com/jquery-#{JQUERY_VERSION}.min.js",
-      :yandex             => "//yandex.st/jquery/#{JQUERY_VERSION}/jquery.min.js"
+      :yandex             => "//yandex.st/jquery/#{JQUERY_VERSION}/jquery.min.js",
+      :cloudflare         => "//cdnjs.cloudflare.com/ajax/libs/jquery/#{JQUERY_VERSION}/jquery.min.js"
     }
 
     def jquery_url(name, options = {})
