@@ -61,7 +61,7 @@ Then in layout:
 = javascript_include_tag 'application'
 ```
 
-Note that valid CDN symbols are `:google`, `:microsoft`, `:jquery` and `:yandex`.
+Note that valid CDN symbols are `:google`, `:microsoft`, `:jquery`, `:cloudflare` and `:yandex`.
 
 Now, it will generate the following on production:
 
