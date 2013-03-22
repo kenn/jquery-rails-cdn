@@ -27,6 +27,7 @@ On top of that, if you're using asset pipeline, you may have noticed that the ma
 
 Changelog:
 
+* v0.4.0: Added Cloudflare.
 * v0.3.0: Microsoft and Yandex are now always scheme-less. (Thanks to @atipugin)
 * v0.2.1: Use minified version for Yandex. (Thanks to @atipugin)
 * v0.2.0: (Incompatible Change) Google CDN is now always scheme-less. Add Yandex CDN for Russian users. (Thanks to @ai)
