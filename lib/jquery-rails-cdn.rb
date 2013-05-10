@@ -18,7 +18,7 @@ module Jquery::Rails::Cdn
     end
 
     def jquery_include_tag(name, options = {})
-      return javascript_include_tag(:jquery) if OFFLINE and !options[:force]
+      return javascript_include_tag(:jquery, options) if OFFLINE and !options[:force]
 
       [ javascript_include_tag(jquery_url(name, options)),
         javascript_tag("window.jQuery || document.write(unescape('#{javascript_include_tag(:jquery).gsub('<','%3C')}'))")
