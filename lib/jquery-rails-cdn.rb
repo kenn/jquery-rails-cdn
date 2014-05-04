@@ -8,7 +8,7 @@ module Jquery::Rails::Cdn
     URL = {
       :google             => "//ajax.googleapis.com/ajax/libs/jquery/#{JQUERY_VERSION}/jquery.min.js",
       :microsoft          => "//ajax.aspnetcdn.com/ajax/jQuery/jquery-#{JQUERY_VERSION}.min.js",
-      :jquery             => "http://code.jquery.com/jquery-#{JQUERY_VERSION}.min.js",
+      :jquery             => "//code.jquery.com/jquery-#{JQUERY_VERSION}.min.js",
       :yandex             => "//yandex.st/jquery/#{JQUERY_VERSION}/jquery.min.js",
       :cloudflare         => "//cdnjs.cloudflare.com/ajax/libs/jquery/#{JQUERY_VERSION}/jquery.min.js"
     }
