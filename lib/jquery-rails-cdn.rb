@@ -12,6 +12,13 @@ module Jquery::Rails::Cdn
       serve_cdn_version(name, options, use_v1)
     end
 
+    def jquery_url(name, use_v1 = false)
+      version = jquery_version(use_v1)
+      url(version)[name]
+    end
+
+    private
+
     def serve_cdn_version(name, options, use_v1)
       jquery_asset = use_v1 ? :jquery : :jquery2
 
@@ -20,15 +27,12 @@ module Jquery::Rails::Cdn
       ].join("\n").html_safe
     end
 
-    def jquery_url(name, use_v1 = false)
-      version = jquery_version(use_v1)
-      url(version)[name]
-    end
-
     def jquery_version(use_v1 = false)
       use_v1 ? Jquery::Rails::JQUERY_VERSION : Jquery::Rails::JQUERY_2_VERSION
+    rescue NameError
+      Jquery::Rails::JQUERY_VERSION
     end
-    
+
     def url(version)
       return unless version
       { google:     "//ajax.googleapis.com/ajax/libs/jquery/#{version}/jquery.min.js",
