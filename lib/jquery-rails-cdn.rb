@@ -8,7 +8,7 @@ module Jquery::Rails::Cdn
     def jquery_include_tag(name, options = {})
       use_v1 = options.delete(:use_v1)
 
-      return javascript_include_tag(:jquery, options) if !options.delete(:force) and OFFLINE
+      return javascript_include_tag(jquery_asset(use_v1), options) if !options.delete(:force) and OFFLINE
       serve_cdn_version(name, options, use_v1)
     end
 
@@ -20,13 +20,15 @@ module Jquery::Rails::Cdn
     private
 
     def serve_cdn_version(name, options, use_v1)
-      jquery_asset = use_v1 ? :jquery : :jquery2
-
       [javascript_include_tag(jquery_url(name, use_v1), options),
-       javascript_tag("window.jQuery || document.write(unescape('#{javascript_include_tag(jquery_asset, options).gsub('<', '%3C')}'))")
+       javascript_tag("window.jQuery || document.write(unescape('#{javascript_include_tag(jquery_asset(use_v1), options).gsub('<', '%3C')}'))")
       ].join("\n").html_safe
     end
-
+    
+    def jquery_asset(use_v1)
+      use_v1 ? :jquery : :jquery2
+    end
+    
     def jquery_version(use_v1 = false)
       use_v1 ? Jquery::Rails::JQUERY_VERSION : Jquery::Rails::JQUERY_2_VERSION
     rescue NameError
