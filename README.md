@@ -27,6 +27,7 @@ On top of that, if you're using asset pipeline, you may have noticed that the ma
 
 Changelog:
 
+* v1.0.4: jQuery2 used by default now. Added option `use_v1` option which allows you to use jQuery instead of jQuery2. If `jquery-rails` gem is old and has no jQuery2 then jQuery will be used.
 * v1.0.0: Options like `defer: true` or `data-turbolinks-eval: false` are allowed to be passed. (Thanks to @mkitt)
 * v0.4.0: Added Cloudflare. (Thanks to @damonmorgan)
 * v0.3.0: Microsoft and Yandex are now always scheme-less. (Thanks to @atipugin)
@@ -53,8 +54,9 @@ If you're using asset pipeline with Rails 3.1+,
 - Put the following line in `config/application.rb`, so that jquery.js will be served from your server when CDN is not available.
 
 ```ruby
-config.assets.precompile += ['jquery.js']
+config.assets.precompile += ['jquery2.js']
 ```
+or `config.assets.precompile += ['jquery.js']` if you want to use jQuery v1.
 
 Then in layout:
 
