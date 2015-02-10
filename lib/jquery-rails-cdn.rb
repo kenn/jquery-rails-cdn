@@ -14,7 +14,7 @@ module Jquery::Rails::Cdn
 
     def jquery_url(name, use_v1 = false)
       version = jquery_version(use_v1)
-      url(version)[name]
+      cdn_url(version)[name]
     end
 
     private
@@ -33,7 +33,7 @@ module Jquery::Rails::Cdn
       Jquery::Rails::JQUERY_VERSION
     end
 
-    def url(version)
+    def cdn_url(version)
       return unless version
       { google:     "//ajax.googleapis.com/ajax/libs/jquery/#{version}/jquery.min.js",
         microsoft:  "//ajax.aspnetcdn.com/ajax/jQuery/jquery-#{version}.min.js",
