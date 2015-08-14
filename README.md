@@ -27,6 +27,7 @@ On top of that, if you're using asset pipeline, you may have noticed that the ma
 
 Changelog:
 
+* v1.1.0: Support jQuery2. (Thanks to @timurkhafizov)
 * v1.0.0: Options like `defer: true` or `data-turbolinks-eval: false` are allowed to be passed. (Thanks to @mkitt)
 * v0.4.0: Added Cloudflare. (Thanks to @damonmorgan)
 * v0.3.0: Microsoft and Yandex are now always scheme-less. (Thanks to @atipugin)
@@ -82,8 +83,22 @@ on development:
 <script src="/assets/jquery.js?body=1" type="text/javascript"></script>
 ```
 
-If you want to check the production URL, you can pass `:force => true` as an option.
+If you want to check the production URL, you can pass `force: true` as an option.
 
 ```ruby
-jquery_include_tag :google, :force => true
+jquery_include_tag :google, force: true
+```
+
+## jQuery 2
+
+If you want to use jQuery 2, drop the following line in `config/initializers/jquery_cdn.rb`:
+
+```ruby
+Jquery::Rails::Cdn.major_version = 2
+```
+
+and then in `config/application.rb`:
+
+```ruby
+config.assets.precompile += ['jquery2.js']
 ```
