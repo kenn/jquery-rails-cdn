@@ -16,24 +16,32 @@ module Jquery::Rails::Cdn
 
     def jquery_url(name)
       @@jquery_urls ||= begin
-        version = case Jquery::Rails::Cdn.major_version
-        when 1, NilClass
-          Jquery::Rails::JQUERY_VERSION
-        when 2
-          Jquery::Rails::JQUERY_2_VERSION
-        else
-          raise 'invalid :major_version option'
-        end
+        version = jquery_version_chooser(Jquery::Rails::JQUERY_VERSION, Jquery::Rails::JQUERY_2_VERSION)
         Hash[URL.map{|k,v| [k, v.sub(/\{JQUERY_VERSION\}/, version)] }]
       end
-      @@jquery_urls[name]
+      if name == :local
+        jquery_version_chooser(:jquery, :jquery2)
+      else
+        @@jquery_urls[name]
+      end
+    end
+
+    def jquery_version_chooser(one, two)
+      case Jquery::Rails::Cdn.major_version
+      when 1, NilClass
+        one
+      when 2
+        two
+      else
+        raise 'invalid :major_version option'
+      end
     end
 
     def jquery_include_tag(name, options = {})
-      return javascript_include_tag(:jquery, options) if OFFLINE && !options.delete(:force)
+      return javascript_include_tag(jquery_url(:local), options) if OFFLINE && !options.delete(:force)
 
       [ javascript_include_tag(jquery_url(name), options),
-        javascript_tag("window.jQuery || document.write(unescape('#{javascript_include_tag(:jquery, options).gsub('<','%3C')}'))")
+        javascript_tag("window.jQuery || document.write(unescape('#{javascript_include_tag(jquery_url(:local), options).gsub('<','%3C')}'))")
       ].join("\n").html_safe
     end
   end
