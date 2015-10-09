@@ -16,4 +16,5 @@ Gem::Specification.new do |gem|
   gem.version       = Jquery::Rails::Cdn::VERSION
 
   gem.add_runtime_dependency "jquery-rails"
+  gem.add_development_dependency 'minitest'
 end

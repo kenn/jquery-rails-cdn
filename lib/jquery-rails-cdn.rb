@@ -1,10 +1,10 @@
 require 'jquery-rails'
 require 'jquery-rails-cdn/version'
 
-module Jquery::Rails::Cdn
-  mattr_accessor :major_version
+module Jquery::Rails
+  module Cdn
+    mattr_accessor :major_version
 
-  module ActionViewExtensions
     OFFLINE = (Rails.env.development? or Rails.env.test?)
     URL = {
       :google      => "//ajax.googleapis.com/ajax/libs/jquery/{JQUERY_VERSION}/jquery.min.js",
@@ -16,7 +16,8 @@ module Jquery::Rails::Cdn
 
     def jquery_url(name)
       @@jquery_urls ||= begin
-        version = jquery_version_chooser(Jquery::Rails::JQUERY_VERSION, Jquery::Rails::JQUERY_2_VERSION)
+        constant = jquery_version_chooser('JQUERY_VERSION', 'JQUERY_2_VERSION')
+        version = "Jquery::Rails::#{constant}".constantize
         Hash[URL.map{|k,v| [k, v.sub(/\{JQUERY_VERSION\}/, version)] }]
       end
       if name == :local
@@ -49,7 +50,7 @@ module Jquery::Rails::Cdn
   class Railtie < Rails::Railtie
     initializer 'jquery_rails_cdn.action_view' do |app|
       ActiveSupport.on_load(:action_view) do
-        include Jquery::Rails::Cdn::ActionViewExtensions
+        include Jquery::Rails::Cdn
       end
     end
   end
