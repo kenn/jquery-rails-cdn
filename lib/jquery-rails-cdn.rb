@@ -16,25 +16,23 @@ module Jquery::Rails
 
     def jquery_url(name)
       @@jquery_urls ||= begin
-        constant = jquery_version_chooser('JQUERY_VERSION', 'JQUERY_2_VERSION', 'JQUERY_3_VERSION')
+        constant = jquery_version_chooser('JQUERY_VERSION', 'JQUERY_2_VERSION')
         version = "Jquery::Rails::#{constant}".constantize
         Hash[URL.map{|k,v| [k, v.sub(/\{JQUERY_VERSION\}/, version)] }]
       end
       if name == :local
-        jquery_version_chooser(:jquery, :jquery2, :jquery3)
+        jquery_version_chooser(:jquery, :jquery2)
       else
         @@jquery_urls[name]
       end
     end
 
-    def jquery_version_chooser(one, two, three)
+    def jquery_version_chooser(one, two)
       case Jquery::Rails::Cdn.major_version
       when 1, NilClass
         one
       when 2
         two
-      when 3
-        three
       else
         raise 'invalid :major_version option'
       end

@@ -1,7 +1,7 @@
 module Jquery
   module Rails
     module Cdn
-      VERSION = '1.2.0'
+      VERSION = '1.1.2'
     end
   end
 end
