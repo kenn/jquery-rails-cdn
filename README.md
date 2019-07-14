@@ -104,4 +104,4 @@ config.assets.precompile += ['jquery2.js']
 ```
 
 ## jQuery UI
-To get the same CDN benefits with jQuery UI, we reccomend [jquery-ui-rails-cdn](https://github.com/styx/jquery-ui-rails-cdn).
+To get the same CDN benefits with jQuery UI, we recommend [jquery-ui-rails-cdn](https://github.com/styx/jquery-ui-rails-cdn).
