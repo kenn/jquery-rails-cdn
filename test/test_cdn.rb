@@ -46,4 +46,22 @@ class TestCdn < Minitest::Test
       assert_match regex, @view.jquery_include_tag(:google, force: true)
     end
   end
+
+  class Three < Minitest::Test
+    def setup
+      Jquery::Rails::Cdn.major_version = 3
+      Jquery::Rails::Cdn.class_variable_set(:@@jquery_urls, nil)
+      @view = ActionView::Base.new
+    end
+
+    def test_local
+      Jquery::Rails::Cdn.major_version = 3
+      assert_equal '<script src="/javascripts/jquery3.js"></script>', @view.jquery_include_tag(:google)
+    end
+
+    def test_remote
+      regex = Regexp.new 'ajax.googleapis.com/ajax/libs/jquery/3.\d+.\d+/jquery.min.js'
+      assert_match regex, @view.jquery_include_tag(:google, force: true)
+    end
+  end
 end
