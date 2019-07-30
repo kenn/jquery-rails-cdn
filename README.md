@@ -27,6 +27,7 @@ On top of that, if you're using asset pipeline, you may have noticed that the ma
 
 Changelog:
 
+* v1.2.0: Support jQuery3. (Thanks to @CUnknown)
 * v1.1.0: Support jQuery2. (Thanks to @timurkhafizov)
 * v1.0.0: Options like `defer: true` or `data-turbolinks-eval: false` are allowed to be passed. (Thanks to @mkitt)
 * v0.4.0: Added Cloudflare. (Thanks to @damonmorgan)
@@ -89,7 +90,7 @@ If you want to check the production URL, you can pass `force: true` as an option
 jquery_include_tag :google, force: true
 ```
 
-## jQuery 2
+## jQuery 2 / jQuery 3
 
 If you want to use jQuery 2, drop the following line in `config/initializers/jquery_cdn.rb`:
 
@@ -97,10 +98,22 @@ If you want to use jQuery 2, drop the following line in `config/initializers/jqu
 Jquery::Rails::Cdn.major_version = 2
 ```
 
+or for jQuery 3:
+
+```ruby
+Jquery::Rails::Cdn.major_version = 3
+```
+
 and then in `config/application.rb`:
 
 ```ruby
 config.assets.precompile += ['jquery2.js']
+```
+
+or for jQuery 3:
+
+```ruby
+config.assets.precompile += ['jquery3.js']
 ```
 
 ## jQuery UI
